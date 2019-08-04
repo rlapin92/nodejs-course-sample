@@ -4,7 +4,7 @@ const hbs = require('hbs');
 const {getForecast} = require('./utils/forecast');
 const {getLocation} = require('./utils/geocode');
 const app = express();
-
+const port = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, '../public')));
 
@@ -60,6 +60,6 @@ app
     .get('*', (req, res) => {
         res.render('404', {title: '404', name: 'Roman', error: 'Page cannot be found'});
     })
-    .listen(3000, () => {
-        console.log('Server is up on port 3000');
+    .listen(port, () => {
+        console.log('Server is up on port '+port);
     });

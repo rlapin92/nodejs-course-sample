@@ -9,7 +9,7 @@ exports.getForecast = (lat, lng, cb) => request.get({url: url(lat, lng), json: t
         return cb('Unable to find location');
     }
     const {currently: {precipProbability, temperature} = {}} = response.body;
-    cb(null, `${response.body.daily.data[0].summary} It is currently ${temperature} degrees out. There is a ${precipProbability}% chance of rain`);
+    cb(null, `${response.body.daily.data[0].summary}. This high today is ${response.body.daily.data[0].temperatureHigh} with a low if ${response.body.daily.data[0].temperatureLow}. There is a ${precipProbability}% chance of rain`);
 
 
 });
